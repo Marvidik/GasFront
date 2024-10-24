@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt</title>
+
+    <style>
+        /* General body styling to center content */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            max-width: 58mm; /* Adjust for thermal receipt width */
+            margin: 0 auto;
+        }
+
+        /* Receipt container */
+        .receipt {
+            padding: 10px;
+        }
+
+        /* Header section with the company name and date */
+        .receipt-header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .receipt-header h4 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .receipt-header p {
+            margin: 5px 0;
+            font-size: 12px;
+        }
+
+        /* Info section for customer and transaction details */
+        .receipt-info {
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
+
+        .receipt-info p {
+            margin: 4px 0;
+        }
+
+        /* Items section for purchases (amount bought, price, etc.) */
+        .receipt-items {
+            margin-bottom: 10px;
+            border-top: 1px dashed #000;
+            border-bottom: 1px dashed #000;
+            padding: 10px 0;
+        }
+
+        .receipt-items p {
+            font-size: 12px;
+            margin: 5px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Total amount section */
+        .receipt-total {
+            text-align: right;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .receipt-total p {
+            margin: 0;
+        }
+
+        /* Button styling for print and close */
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .button-group button {
+            padding: 8px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+            flex: 1;
+            margin: 0 5px;
+        }
+
+        .button-group button:hover {
+            background-color: #45a049;
+        }
+
+        .close-btn {
+            background-color: #f44336;
+        }
+
+        .close-btn:hover {
+            background-color: #e53935;
+        }
+
+        /* Hide everything except the receipt during printing */
+        @media print {
+            .button-group {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="receipt">
+        <div class="receipt-header">
+            <h4>KSoilandgas</h4>
+            <p>Date: <span id="sale-date"></span></p>
+        </div>
+
+        <div class="receipt-info">
+            <p>Customer: <span id="customer-name"></span></p>
+            <p>Payment Option: <span id="payment-option"></span></p>
+        </div>
+
+        <div class="receipt-items">
+            <p><span>Amount Bought:</span> <span id="amount-bought"></span> kg</p>
+            <p><span>Amount Paid:</span> ₦<span id="amount-paid"></span></p>
+        </div>
+
+        <div class="receipt-total">
+            <p>Total Paid: ₦<span id="amount-paid-total"></span></p>
+        </div>
+
+        <div class="button-group">
+            <button onclick="printInvoice()">Print Receipt</button>
+            <button class="close-btn" onclick="closeInvoice()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Retrieve sale data from localStorage
+            const saleData = JSON.parse(localStorage.getItem('currentSale'));
+
+            if (saleData) {
+                // Populate the receipt with the sale data
+                document.getElementById('sale-date').textContent = new Date(saleData.date).toLocaleDateString();
+                document.getElementById('customer-name').textContent = saleData.customer;
+                document.getElementById('payment-option').textContent = saleData.payment_option;
+                document.getElementById('amount-bought').textContent = saleData.amount_bought;
+                document.getElementById('amount-paid').textContent = saleData.amount_paid;
+                document.getElementById('amount-paid-total').textContent = saleData.amount_paid;
+            } else {
+                console.error('No sale data found in localStorage');
+            }
+        });
+
+        // Function to print the receipt with a slight delay
+        function printInvoice() {
+            setTimeout(() => {
+                window.print();
+            }, 500); // Delay to ensure content is loaded
+        }
+
+        // Function to close the receipt and return to index.html
+        function closeInvoice() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

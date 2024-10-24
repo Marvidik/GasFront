@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Oil and Gas</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" />
+    <link rel="stylesheet" href="../assets/css/backend-plugin.min.css">
+    <link rel="stylesheet" href="../assets/css/backend.css?v=1.0.0">
+    <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
+    <link rel="stylesheet" href="../assets/vendor/remixicon/fonts/remixicon.css">
+</head>
+
+<body class="">
+    <!-- loader Start -->
+    <div id="loading">
+        <div id="loading-center"></div>
+    </div>
+    <!-- loader END -->
+
+    <!-- Wrapper Start -->
+    <div class="wrapper">
+        <div class="iq-sidebar sidebar-default">
+            <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
+                <a href="../backend/index.html" class="header-logo">
+                    <img src="../assets/logooo.jpeg" class="img-fluid rounded-normal light-logo" alt="logo">
+                    <h5 class="logo-title light-logo ml-3">KSoilandgas</h5>
+                </a>
+                <div class="iq-menu-bt-sidebar ml-0">
+                    <i class="las la-bars wrapper-menu"></i>
+                </div>
+            </div>
+
+            <div class="data-scrollbar" data-scroll="1">
+                <nav class="iq-sidebar-menu">
+                    <ul id="iq-sidebar-toggle" class="iq-menu">
+                        <li class="active">
+                            <a href="../backend/index.html" class="svg-icon">
+                                <span class="ml-4">Dashboards</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="../backend/offlinelist.html" class="svg-icon">
+                                <span class="ml-4">Offline Sales List</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="#sale" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                                <span class="ml-4">Sale</span>
+                                <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="10 15 15 20 20 15"></polyline>
+                                    <path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                                </svg>
+                            </a>
+                            <ul id="sale" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                                <li class="">
+                                    <a href="../backend/page-list-sale.html">
+                                        <i class="las la-minus"></i><span>List Sale</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="../backend/addproductsale.html">
+                                        <i class="las la-minus"></i><span>Add Product Sale</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="p-3"></div>
+            </div>
+        </div>
+
+        <div class="iq-top-navbar">
+            <div class="iq-navbar-custom">
+                <nav class="navbar navbar-expand-lg navbar-light p-0">
+                    <div class="iq-navbar-logo d-flex align-items-center justify-content-between">
+                        <i class="ri-menu-line wrapper-menu"></i>
+                        <a href="../backend/index.html" class="header-logo">
+                            <img src="../assets/logooo.jpeg" class="img-fluid rounded-normal" alt="logo">
+                            <h5 class="logo-title ml-3">KSoilandgas</h5>
+                        </a>
+                    </div>
+
+                    <div class="d-flex align-items-center">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
+                            <i class="ri-menu-3-line"></i>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto navbar-list align-items-center">
+                                <li class="nav-item nav-icon dropdown caption-content">
+                                    <a href="#" class="search-toggle dropdown-toggle" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img src="../assets/images/user/1.png" class="img-fluid rounded" alt="user">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <div class="content-page">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card card-transparent card-block card-stretch card-height border-none">
+                            <div class="card-body p-0 mt-lg-2 mt-0">
+                                <h3 class="mb-3">Hi Graham, Good Day</h3>
+                                <p class="mb-0 mr-4">Your dashboard gives you views of key performance</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <button id="clear-offline-saves" class="btn btn-danger float-right">Clear All Offline Saves</button>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-lg-12">
+                        <form id="sale-form">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <input type="date" id="sale-date" class="form-control" required placeholder="Date">
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" id="customer-name" class="form-control" required placeholder="Customer Name">
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" id="product-name" class="form-control" required placeholder="Product">
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="number" id="total-kg" class="form-control" required placeholder="Total Kg">
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="number" id="amount-paid" class="form-control" required placeholder="Amount Paid">
+                                </div>
+                                <div class="col-md-4">
+                                    <select id="payment-option" class="form-control" required>
+                                        <option value="" disabled selected>Select Payment Option</option>
+                                        <option value="Cash">Cash</option>
+                                        <option value="Credit Card">Credit Card</option>
+                                        <option value="Debit Card">Debit Card</option>
+                                        <option value="Bank Transfer">Bank Transfer</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="submit" class="btn btn-primary">Add Sale</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="table-responsive rounded mb-3">
+                        <table class="data-table table mb-0 tbl-server-info">
+                            <thead class="bg-white text-uppercase">
+                                <tr class="ligth ligth-data">
+                                    <th>
+                                        <div class="checkbox d-inline-block">
+                                            <input type="checkbox" class="checkbox-input" id="checkbox1">
+                                            <label for="checkbox1" class="mb-0"></label>
+                                        </div>
+                                    </th>
+                                    <th>Date</th>
+                                    <th>Customer</th>
+                                    <th>Product</th>
+                                    <th>Total Kg</th>
+                                    <th>Amount Paid</th>
+                                    <th>Payment Option</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="ligth-body" id="sales-list">
+                                <!-- Sales data will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Wrapper END -->
+
+    <!-- Backend Bundle JavaScript -->
+    <script src="../assets/js/backend-bundle.min.js"></script>
+    <!-- Table Treeview JavaScript -->
+    <script src="../assets/js/table-treeview.js"></script>
+    <!-- Chart Custom JavaScript -->
+    <script src="../assets/js/customizer.js"></script>
+    <!-- App JavaScript -->
+    <script src="../assets/js/app.js"></script>
+    <script src="../js/listoffline.js"></script> <!-- Link to your new JS file -->
+
+</body>
+</html>
