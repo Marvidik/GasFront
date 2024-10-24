@@ -2,10 +2,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 
-// Add this line to enable auto-reloading on file changes
-require('electron-reload')(path.join(__dirname, 'src'), {
-    electron: path.join(__dirname, 'node_modules', '.bin', 'electron')
-});
 
 // Function to create the main window
 async function createWindow() {
