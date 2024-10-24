@@ -10,8 +10,8 @@ require('electron-reload')(path.join(__dirname, 'src'), {
 // Function to create the main window
 async function createWindow() {
     const win = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1000,
+        height: 800,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'), // Use preload for IPC security
             contextIsolation: true, // Required for preload.js

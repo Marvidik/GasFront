@@ -21,10 +21,24 @@ function loadSales() {
           <td>${sale.paymentOption}</td>
           <td>
               <button class="btn btn-danger" onclick="deleteSale(${index})">Delete</button>
-              <button class="btn btn-info" onclick="viewReceipt(${index})">View Receipt</button>
+              <button class="btn btn-info view-receipt" data-sale='${JSON.stringify(sale)}'>View Receipt</button>
           </td>
       `;
       salesTableBody.appendChild(row);
+  });
+
+  // Add event listener to view-receipt buttons
+  document.querySelectorAll('.view-receipt').forEach(button => {
+      button.addEventListener('click', function (event) {
+          event.preventDefault();
+
+          // Store sale data in localStorage
+          const saleData = this.getAttribute('data-sale');
+          localStorage.setItem('currentSale', saleData);
+
+          // Redirect to the invoice page
+          window.location.href = 'pages-invoice.html'; // Adjust the path if needed
+      });
   });
 }
 
@@ -35,10 +49,10 @@ document.getElementById('sale-form').addEventListener('submit', function(event) 
   const sale = {
       date: document.getElementById('sale-date').value,
       customer: document.getElementById('customer-name').value,
-      product: document.getElementById('product-name').value,
-      totalKg: document.getElementById('total-kg').value,
-      amountPaid: document.getElementById('amount-paid').value,
-      paymentOption: document.getElementById('payment-option').value,
+      product_name: document.getElementById('product-name').value,
+      amount_bought: document.getElementById('total-kg').value,
+      amount_paid: document.getElementById('amount-paid').value,
+      payment_option: document.getElementById('payment-option').value,
   };
 
   const salesList = JSON.parse(localStorage.getItem('sales')) || [];
@@ -55,18 +69,6 @@ function deleteSale(index) {
   salesList.splice(index, 1); // Remove the sale at the specified index
   localStorage.setItem('sales', JSON.stringify(salesList));
   loadSales(); // Refresh the sales table
-}
-
-// Function to view the receipt for a specific sale
-function viewReceipt(index) {
-  const salesList = JSON.parse(localStorage.getItem('sales')) || [];
-  const sale = salesList[index];
-
-  // Save the selected sale data to localStorage for the receipt
-  localStorage.setItem('currentSale', JSON.stringify(sale));
-
-  // Redirect to the receipt page
-  window.location.href = 'pages-invoice.html'; // Adjust the path if needed
 }
 
 // Load sales on page load

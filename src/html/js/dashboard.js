@@ -63,12 +63,13 @@ document.addEventListener('DOMContentLoaded', function () {
                         </td>
                         <td>${new Date(sale.date).toLocaleDateString()}</td>
                         <td>${sale.customer}</td>
+                        <td>${sale.product_name}</td>
+                        <td>${sale.amount_bought}</td>
                         <td>₦${sale.amount_paid}</td>
                         <td>${sale.payment_option}</td>
                         <td>
                             <div class="d-flex align-items-center list-action">
                                 <a class="badge badge-info mr-2 view-receipt" data-id="${sale.id}" data-sale='${JSON.stringify(sale)}' data-toggle="tooltip" data-placement="top" title="View" href="pages-invoice.html"><i class="ri-eye-line mr-0"></i></a>
-                                <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" title="Edit" href="#"><i class="ri-pencil-line mr-0"></i></a>
                             </div>
                         </td>
                     `;
@@ -83,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         // Store sale data in localStorage
                         const saleData = this.getAttribute('data-sale');
                         localStorage.setItem('currentSale', saleData);
+                        
 
                         // Redirect to the invoice page
                         window.location.href = 'pages-invoice.html';

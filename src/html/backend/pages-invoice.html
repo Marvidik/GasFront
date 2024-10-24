@@ -115,7 +115,7 @@
 <body>
     <div class="receipt">
         <div class="receipt-header">
-            <h4>KSoilandgas</h4>
+            <img src="../assets/logooo.jpeg" class="img-fluid rounded-normal" alt="logo" style="width: 150px; height: 150px;">
             <p>Date: <span id="sale-date"></span></p>
         </div>
 
@@ -125,8 +125,9 @@
         </div>
 
         <div class="receipt-items">
-            <p><span>Amount Bought:</span> <span id="amount-bought"></span> kg</p>
-            <p><span>Amount Paid:</span> ₦<span id="amount-paid"></span></p>
+            <p><span>Product Name:</span> <span id="product-name"></span></p>
+            <p><span>Amount Bought:</span> <span id="amount-bought"></span></p>
+            <p><span>Amount Paid:</span><span id="amount-paid"></span></p>
         </div>
 
         <div class="receipt-total">
@@ -152,6 +153,7 @@
                 document.getElementById('amount-bought').textContent = saleData.amount_bought;
                 document.getElementById('amount-paid').textContent = saleData.amount_paid;
                 document.getElementById('amount-paid-total').textContent = saleData.amount_paid;
+                document.getElementById('product-name').textContent = saleData.product_name;
             } else {
                 console.error('No sale data found in localStorage');
             }
